@@ -1,0 +1,1454 @@
+{
+	"info": {
+		"_postman_id": "c497f3c0-0e8a-4ccc-9b6d-d5f78e443323",
+		"name": "Dashboard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29806706"
+	},
+	"item": [
+		{
+			"name": "Mobile-Bulk-Payments",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"amount\": 800.0,\n        \"mobileOperator\": \"saf\",\n        \"phone\": \"1234567890\",\n        \"status\": \"pending\",\n        \"remarks\": \"Payment for services\",\n        \"merchantID\": \"joelwasiketestmerchant\"\n    },\n    {\n        \"amount\": 900.0,\n        \"mobileOperator\": \"mtn\",\n        \"phone\": \"0987654321\",\n        \"status\": \"pending\",\n        \"remarks\": \"Payment for goods\",\n        \"merchantID\": \"joelwasiketestmerchant\"\n    }\n]\n",
+									"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{db-base-url}}/api/bulk/mobile/create",
+							"host": [
+								"{{db-base-url}}"
+							],
+							"path": [
+								"api",
+								"bulk",
+								"mobile",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/bulk/mobile/list",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"bulk",
+								"mobile",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"amount\": 100,\n        \"merchantID\": \"joelwasiketestmerchant\",\n        \"mobile_number\": \"1234567890\",\n        \"mobile_operator\": \"saf\",\n        \"remarks\": \"Payment for services\",\n        \"status\": \"pending\"\n      }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{db-base-url}}/api/bulk/mobile/update/2",
+							"host": [
+								"{{db-base-url}}"
+							],
+							"path": [
+								"api",
+								"bulk",
+								"mobile",
+								"update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{db-base-url}}/api/bulk/mobile/delete/1",
+							"host": [
+								"{{db-base-url}}"
+							],
+							"path": [
+								"api",
+								"bulk",
+								"mobile",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bank-Bulk-Payments Copy",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"amount\": 800.0,\n        \"bank_name\": \"EQUITY\",\n        \"account_number\": \"1234567890\",\n        \"status\": \"pending\",\n        \"remarks\": \"Payment for services\",\n        \"merchantID\": \"joelwasiketestmerchant\"\n    },\n    {\n        \"amount\": 900.0,\n        \"bank_name\": \"KCB\",\n        \"account_number\": \"10987654321\",\n        \"status\": \"pending\",\n        \"remarks\": \"Payment for goods\",\n        \"merchantID\": \"joelwasiketestmerchant\"\n    }\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/bulk/bank/create",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"bulk",
+								"bank",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/bulk/bank/list",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"bulk",
+								"bank",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"account_number\": \"1234567890\",\n            \"amount\": 801,\n            \"bank_name\": \"EQUITY\",\n            \"batch_id\": \"b14e61c4-c6b0-4553-9375-071a4d391d5a\",\n            \"merchantID\": \"joelwasiketestmerchant\",\n            \"remarks\": \"Payment for services\",\n            \"status\": \"failed\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/bulk/bank/update/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"bulk",
+								"bank",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/bulk/bank/delete/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"bulk",
+								"bank",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Forex",
+			"item": [
+				{
+					"name": "forex-manual",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/forex/list",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"forex",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single-forex",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/forex/read/filter/USD",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"forex",
+								"read",
+								"filter",
+								"USD"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Forex\": {\n    \"currencyCode\": \"UGX\",\n    \"conversionRate\": 123.45,\n    \"supported\": 1\n    // \"lastUpdated\": 1678901234\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/forex/create",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"forex",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"currencyCode\": \"USD\",\n  \"conversionRate\": 0.008,\n  \"supported\": 1,\n  \"lastUpdated\": 1655151234\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/forex/update/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"forex",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/forex/read/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"forex",
+								"read",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/forex/delete/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"forex",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Links",
+			"item": [
+				{
+					"name": "generate-link",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"M-PESA\",\n    \"token\": \"123456789abcdef\",\n    \"merchant\": \"Moo1\",\n    \"amount\": \"100.50\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{db-base-url}}/api/links/generate",
+							"host": [
+								"{{db-base-url}}"
+							],
+							"path": [
+								"api",
+								"links",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "process-payment-link",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"token\": \"MzZmMGJkODJiNWYxNGIyZjIxZTkyZDdiMDAzMDcyZTg=\",\n  \"impalaMerchantId\": \"TallyKJSNNIWiTni34i@mndJINDIN223Tours\",\n  \"currency\": \"KES\",\n  \"amount\": 1,\n  \"payerPhone\": \"254794940160\",\n  \"mobileMoneySP\": \"M-Pesa\",\n  \"externalId\": \"ImpalaTestTransaction123\",\n  \"callbackUrl\": \"https://webhook.site/9878e703-812c-4b66-b9b2-68bc3e9d46bb\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{db-base-url}}/api/links/process",
+							"host": [
+								"{{db-base-url}}"
+							],
+							"path": [
+								"api",
+								"links",
+								"process"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transactions",
+			"item": [
+				{
+					"name": "Filter Transactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYXNlQ3VycmVuY3kiOiJVU0QiLCJleHAiOjE3NDExNTcxMzEsIm1hcmNoYW50SUQiOiJBZG1pbiIsInJvbGVJRCI6MSwidXNlcm5hbWUiOiJsb2NhbEBtYW0tbGFrYS5jb20ifQ.RzEOG8dTW0YPAzFTCzf5tR8bEBDEBVb6P9DaE_8Wn3g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/transaction/filter?start_date=1733715876&end_date=1733732013&status=SUCCESS",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "1733715876"
+								},
+								{
+									"key": "end_date",
+									"value": "1733732013"
+								},
+								{
+									"key": "status",
+									"value": "SUCCESS"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Single Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYXNlQ3VycmVuY3kiOiIiLCJleHAiOjE3NDEwNzU4NzEsIm1hcmNoYW50SUQiOiJTaGlrYWpoZGNqZEBiU0QzRXNEZHN3U1dEI1dXYmR1d2ljaUJldCIsInJvbGVJRCI6MiwidXNlcm5hbWUiOiJnZW9mZnJleUBzaGlrYWJldC5jby5rZSJ9.N2d9vIFqhKhM5kSGvNYAjTvGGPp129b7uxjgbvodkqU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/transaction/read/7744",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"transaction",
+								"read",
+								"7744"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Card Transactions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYXNlQ3VycmVuY3kiOiJVU0QiLCJleHAiOjE3NDM1ODIzMDksIm1hcmNoYW50SUQiOiJhcHAiLCJyb2xlSUQiOjIsInVzZXJuYW1lIjoiYXBwQG1hbS1sYWthLmNvbSJ9.bjbHsuS5x2QIWdbXAjQLxm9qxO9zVKuRFYkP1MJgi-Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/transaction/read/card",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"read",
+								"card"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Bank Transactions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYXNlQ3VycmVuY3kiOiJVU0QiLCJleHAiOjE3NDQyMTg2NjQsIm1hcmNoYW50SUQiOiJhcHAiLCJyb2xlSUQiOjIsInVzZXJuYW1lIjoiYXBwQG1hbS1sYWthLmNvbSJ9.GMXnREtXbCJYz_KazQ2s4kDbk0kGWOHSmjqIK1ZGk38",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/transaction/read/bank",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"read",
+								"bank"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List All Transactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYXNlQ3VycmVuY3kiOiIiLCJleHAiOjE3NDEwNzU4NzEsIm1hcmNoYW50SUQiOiJTaGlrYWpoZGNqZEBiU0QzRXNEZHN3U1dEI1dXYmR1d2ljaUJldCIsInJvbGVJRCI6MiwidXNlcm5hbWUiOiJnZW9mZnJleUBzaGlrYWJldC5jby5rZSJ9.N2d9vIFqhKhM5kSGvNYAjTvGGPp129b7uxjgbvodkqU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/transaction/list",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Payouts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYXNlQ3VycmVuY3kiOiJVU0QiLCJleHAiOjE3NDM4Mzg5NTMsIm1hcmNoYW50SUQiOiJhcHAiLCJyb2xlSUQiOjIsInVzZXJuYW1lIjoiYXBwQG1hbS1sYWthLmNvbSJ9.SLiFZP5XMZ5vhvyaVtAP9BzOfqaRbuv-CkG3uQm26mA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{db-base-url}}/api/v1/transaction/read/mobile/payouts",
+							"host": [
+								"{{db-base-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"read",
+								"mobile",
+								"payouts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read  Payins",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYXNlQ3VycmVuY3kiOiIiLCJleHAiOjE3NDEyNDQxMTQsIm1hcmNoYW50SUQiOiJBZG1pbjUiLCJyb2xlSUQiOjEsInVzZXJuYW1lIjoiY3VydGlzQG1hbS1sYWthLmNvbSJ9.JYL-0-2KW9Crpo1IFY3y916s3MQRI0lZNBhvadm9S38",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/transaction/read/payins",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"read",
+								"payins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Balance From Base Currency",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYXNlQ3VycmVuY3kiOiIiLCJleHAiOjE3NDEwNzU4NzEsIm1hcmNoYW50SUQiOiJTaGlrYWpoZGNqZEBiU0QzRXNEZHN3U1dEI1dXYmR1d2ljaUJldCIsInJvbGVJRCI6MiwidXNlcm5hbWUiOiJnZW9mZnJleUBzaGlrYWJldC5jby5rZSJ9.N2d9vIFqhKhM5kSGvNYAjTvGGPp129b7uxjgbvodkqU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/transaction/read/balance",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"read",
+								"balance"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "wallet to wallet transfre",
+			"item": [
+				{
+					"name": "initiate-withdrawal-or-tranfere/wallet-request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYXNlQ3VycmVuY3kiOiJVU0QiLCJleHAiOjE3NDc0ODM3ODksIm1hcmNoYW50SUQiOiJQYWthS3VtaSIsInJvbGVJRCI6MiwidXNlcm5hbWUiOiJicmlhbkByZXlzYW5kbWV5cy5jb20ifQ.ScEIspgcexhfz64XxAaiKFITJ84ENjyzHSz3-HYqIPA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n//   \"request\": {\n    \"impalaMerchantId\": \"Pakakumi\",\n    \"amount\": 5,\n    \"currency\": \"KES\" //CANCELED //APPROVED //DISBURSED\n\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/drawings/transfer/toPayout",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drawings",
+								"transfer",
+								"toPayout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatea",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"approvedBy\": 0,\n    \"status\": \"CANCELED\", //PENDING //APPROVED\n    \"amount\": 10,\n    \"comment\": \"funds accepted for processing!\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/drawings/update/24",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"drawings",
+								"update",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Drawings-transfer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYXNlQ3VycmVuY3kiOiJVU0QiLCJleHAiOjE3NDc0ODg3OTksIm1hcmNoYW50SUQiOiJQYWthS3VtaSIsInJvbGVJRCI6MiwidXNlcm5hbWUiOiJicmlhbkByZXlzYW5kbWV5cy5jb20ifQ.qsS6C2d0oxWwkGT-UYSnRMXTl9tgWN-PJ5N-dyMoeCU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/drawings/view",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drawings",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/drawings/delete/12",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"drawings",
+								"delete",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Withdrawal Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYXNlQ3VycmVuY3kiOiJVU0QiLCJleHAiOjE3NDEyNDk3NjYsIm1hcmNoYW50SUQiOiJBZG1pbiIsInJvbGVJRCI6MSwidXNlcm5hbWUiOiJsb2NhbEBtYW0tbGFrYS5jb20ifQ.q695Wt3UaYRP7ROPien5AkzOuLv2CADBUYhj0EOiNWo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/drawings/list/withdrawal",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drawings",
+								"list",
+								"withdrawal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Transfer Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYXNlQ3VycmVuY3kiOiJVU0QiLCJleHAiOjE3NDc0ODkyMTEsIm1hcmNoYW50SUQiOiJhcHAiLCJyb2xlSUQiOjIsInVzZXJuYW1lIjoiYXBwQG1hbS1sYWthLmNvbSJ9.BY2ZSwiDTA-am6L8n0uNp_8UpDhkOIbKzbJ2IHMcqPM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/drawings/list/transfer",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drawings",
+								"list",
+								"transfer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Requests",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYXNlQ3VycmVuY3kiOiJVU0QiLCJleHAiOjE3NDEyNDk3NjYsIm1hcmNoYW50SUQiOiJBZG1pbiIsInJvbGVJRCI6MSwidXNlcm5hbWUiOiJsb2NhbEBtYW0tbGFrYS5jb20ifQ.q695Wt3UaYRP7ROPien5AkzOuLv2CADBUYhj0EOiNWo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/drawings/list",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"drawings",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "merchants",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\n//   \"user\": {\n//     \"name\": \"test merchant\",\n//     \"email\": \"mainalexy@mam-laka.com\",\n//     \"phone\": \"+254706016076\",\n//     \"password\": \"12345678\",\n//     \"role\": 2,\n//     \"status\": \"active\",\n//     \"location\": \"Nairobi\",\n//     \"merchantId\": \"transactworld\",\n//     \"BaseCurrencyID\": 1\n//   }\n// }\n\n\n{\n  \"user\": {\n    \"name\": \"test merchant\",\n    \"email\": \"collinsochieng003@gmail.com\",\n    \"phone\": \"+254706016076\",\n    \"password\": \"12345678\",\n    \"role\": 2,\n    \"status\": \"active\",\n    \"location\": \"Nairobi\",\n    \"merchantId\": \"transactworld\",\n    \"BaseCurrencyID\": 1\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/create",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": {\n    \"name\": \"Admin\",\n    \"email\": \"local@mam-laka.com\",\n    \"phone\": \"254700000000\",\n    \"password\": \"Admin@@254!1kd90olsS.SSLDS\",\n    \"role\": 1,\n    \"status\": \"active\",\n    \"location\": \"Nairobi\",\n    \"merchantId\": \"Admin2\"\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Password Reset Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"collins@mam-laka.com\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/reset-token",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"reset-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"c579fc5b67399e9dc2258a3e1876ed319c914021b92c5de7082057b31a44708c\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/verify-token",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"verify-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"c579fc5b67399e9dc2258a3e1876ed319c914021b92c5de7082057b31a44708c\",\n    \"new_password\": \"testingpassword1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/reset-password",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/list",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": {\n    \"name\": \"Admin\",\n    \"email\": \"app@mam-laka.com\",\n    \"phone\": \"254700000000\",\n    \"role\": 2,\n    \"status\": \"active\",\n    \"location\": \"Nairobi\",\n    \"merchantId\": \"CometAppMain \",\n    \"BaseCurrencyID\": 1,\n    \"TwoFactorAuthEnabled\": true\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/update/5",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"update",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/read/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"read",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single User Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/read/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"read",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"test2@mam-laka.com\",\n  \"current_password\": \"Admin@@254!1kd90olsS.SSLDS\",\n  \"new_password\": \"newpassword456\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/change-password",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "roles",
+			"item": [
+				{
+					"name": "craate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"role\": {\n    \"name\": \"Finance\",\n    \"description\": \"Finance management\",\n    \"permissions\": \"read,write,delete,update\",\n    \"status\": \"active\",\n    \"createdBy\": 1\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/roles/create",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"roles",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/roles/list",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"roles",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"role\": {\n    \"name\": \"Finance\",\n    \"description\": \"Finance management By the department\",\n    \"permissions\": \"read,write,delete,update\",\n    \"status\": \"active\",\n    \"createdBy\": 1\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/roles/update/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"roles",
+								"update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Role",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/roles/read/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"roles",
+								"read",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Currencies",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"currency\": {\n    \"currencyCode\": \"KES\",\n    \"currencyName\": \"Kenyan Shilling\",\n    \"supported\": 1\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/currencies/create",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"currencies",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/currencies/list",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"currencies",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJiYXNlQ3VycmVuY3kiOiJLRVMiLCJleHAiOjE3NDc3NDE4NTMsIm1hcmNoYW50SUQiOiJDb21ldEFwcE1haW4gIiwicm9sZUlEIjoyLCJ1c2VybmFtZSI6ImFwcEBtYW0tbGFrYS5jb20ifQ.KB9Wk-3BIJEqHOPghJw4fCw8q9ro4yB2KaOevLZHvs0",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "db-base-url",
+			"value": "https://merchants.globpay.ai/"
+		},
+		{
+			"key": "BASE_URL",
+			"value": "https://merchants.globpay.ai/",
+			"type": "string"
+		}
+	]
+}
