@@ -1,9 +1,7 @@
 import axios from 'axios';
 
 // API base URL configuration
-const API_BASE_URL = process.env.NODE_ENV === 'development' 
-  ? '' // Use proxy in development (empty string means relative URLs)
-  : 'https://merchants.globpay.ai'; // Direct URL in production
+const API_BASE_URL = ''; // Always use relative URLs to work with proxy in both dev and production
 
 console.log('API Configuration:', {
   NODE_ENV: process.env.NODE_ENV,
@@ -24,16 +22,15 @@ const api = axios.create({
 // Add token to requests if available
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('merchant_token');
-  if (token) {
-    // In development (proxy), use Authorization header
-    // In production (direct), use query parameter to avoid CORS
-    if (process.env.NODE_ENV === 'development') {
-      config.headers.Authorization = `Bearer ${token}`;
-    } else {
-      // Use query parameter for production to avoid CORS issues
-      if (!config.params) config.params = {};
-      config.params.token = token;
-      delete config.headers.Authorization;
+  
+  // Don't add Authorization header for login endpoint
+  if (token && !config.url.includes('/api/users/login')) {
+    // Always use Authorization header with Bearer token
+    config.headers.Authorization = `Bearer ${token}`;
+    
+    // Remove query parameter to avoid duplication
+    if (config.params && config.params.token) {
+      delete config.params.token;
     }
   }
   
@@ -45,17 +42,32 @@ api.interceptors.request.use((config) => {
     fullURL: config.baseURL + config.url,
     headers: config.headers,
     params: config.params,
+    hasToken: !!token,
+    isLoginRequest: config.url.includes('/api/users/login'),
     environment: process.env.NODE_ENV
   });
   
   return config;
 });
 
-// Add response interceptor for error handling
+// Add response interceptor for error handling and logging
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    console.log('API Response Success:', {
+      status: response.status,
+      url: response.config.url,
+      data: response.data
+    });
+    return response;
+  },
   (error) => {
-    console.error('API Error:', error);
+    console.error('API Error:', {
+      status: error.response?.status,
+      statusText: error.response?.statusText,
+      url: error.config?.url,
+      data: error.response?.data,
+      message: error.message
+    });
     return Promise.reject(error);
   }
 );
