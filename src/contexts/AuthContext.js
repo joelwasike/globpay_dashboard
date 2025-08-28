@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
-import axios from 'axios';
+import api, { API_BASE_URL } from '../config/api';
 
 const AuthContext = createContext();
 
@@ -17,33 +17,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [selectedInstitution, setSelectedInstitution] = useState('Merchant A');
 
-  // API base URL - use proxy in development, direct URL in production
-  const API_BASE_URL = process.env.NODE_ENV === 'development' 
-    ? '' // Use proxy in development
-    : 'https://merchantapi.mam-laka.com'; // Direct URL in production
-
-  // Create axios instance with base URL
-  const api = axios.create({
-    baseURL: API_BASE_URL,
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-    withCredentials: false, // Disable credentials for CORS
-  });
-
-  // Add token to requests if available
-  api.interceptors.request.use((config) => {
-    const token = localStorage.getItem('merchant_token');
-    if (token) {
-      // Try different ways to send the token to handle CORS
-      config.headers.Authorization = `Bearer ${token}`;
-      // Also try as a query parameter if header fails
-      if (!config.params) config.params = {};
-      config.params.token = token;
-    }
-    return config;
-  });
+  // API instance is now imported from centralized config
 
   useEffect(() => {
     // Check for existing token

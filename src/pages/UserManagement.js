@@ -45,7 +45,7 @@ const UserManagement = () => {
           {
             id: 1,
             name: 'Admin User',
-            email: 'admin@mam-laka.com',
+            email: 'admin@globpay.ai',
             phone: '254700000000',
             role: {
               id: 1,
@@ -65,7 +65,7 @@ const UserManagement = () => {
           {
             id: 2,
             name: 'Merchant User',
-            email: 'merchant@mam-laka.com',
+            email: 'merchant@globpay.ai',
             phone: '254711111111',
             role: {
               id: 2,

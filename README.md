@@ -91,7 +91,7 @@ npm start
 
 ### API Configuration
 
-The dashboard connects to the merchant API at `https://merchantapi.mam-laka.com`. Make sure the API is accessible and properly configured.
+The dashboard connects to the merchant API at `https://merchants.globpay.ai`. Make sure the API is accessible and properly configured.
 
 ### Authentication
 

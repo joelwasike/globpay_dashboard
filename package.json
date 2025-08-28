@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Finance Merchant Dashboard for Payment Processing and Management",
   "private": true,
-  "proxy": "https://merchantapi.mam-laka.com",
+  "proxy": "https://merchants.globpay.ai",
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
