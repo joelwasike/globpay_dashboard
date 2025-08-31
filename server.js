@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use('/api', createProxyMiddleware({
   target: 'https://merchants.globpay.ai',
   changeOrigin: true,
-  secure: true,
+  secure: false,
   logLevel: 'info',
   onProxyReq: (proxyReq, req, res) => {
     console.log('Proxying request:', req.method, req.url, '->', proxyReq.path);
@@ -21,6 +21,41 @@ app.use('/api', createProxyMiddleware({
   },
   onError: (err, req, res) => {
     console.error('Proxy error:', err.message);
+    res.status(500).json({ error: 'Proxy error: ' + err.message });
+  }
+}));
+
+// Proxy auth requests to merchants.globpay.ai
+app.use('/auth', createProxyMiddleware({
+  target: 'https://merchants.globpay.ai',
+  changeOrigin: true,
+  secure: false,
+  onProxyReq: (proxyReq, req, res) => {
+    console.log('Proxying auth request:', req.method, req.url, '->', proxyReq.path);
+  },
+  onProxyRes: (proxyRes, req, res) => {
+    console.log('Auth proxy response:', proxyRes.statusCode, req.url);
+  },
+  onError: (err, req, res) => {
+    console.error('Auth proxy error:', err.message);
+    res.status(500).json({ error: 'Auth proxy error: ' + err.message });
+  }
+}));
+
+// Proxy user management requests to merchants.globpay.ai
+app.use('/users', createProxyMiddleware({
+  target: 'https://merchants.globpay.ai',
+  changeOrigin: true,
+  secure: false,
+  onProxyReq: (proxyReq, req, res) => {
+    console.log('Proxying user request:', req.method, req.url, '->', proxyReq.path);
+  },
+  onProxyRes: (proxyRes, req, res) => {
+    console.log('User proxy response:', proxyRes.statusCode, req.url);
+  },
+  onError: (err, req, res) => {
+    console.error('User proxy error:', err.message);
+    res.status(500).json({ error: 'User proxy error: ' + err.message });
   }
 }));
 

@@ -1,172 +1,174 @@
-# Merchant Dashboard
+# Merchants Dashboard
 
-A comprehensive finance merchant dashboard for payment processing and management, built with React and Tailwind CSS.
+A comprehensive merchant dashboard for payment processing and management, built with React and Node.js.
 
-## Features
-
-### 🏠 Dashboard
-- Real-time merchant account overview
-- Transaction statistics and metrics
-- Recent activity feed
-- Quick action buttons for common tasks
-
-### 💳 Transactions
-- View all payment transactions
-- Filter by type (Mobile, Bank, Card, Payouts)
-- Search and date range filtering
-- Transaction status tracking
-
-### 💰 Bulk Payments
-- Create bulk mobile money payments
-- Create bulk bank transfers
-- Manage payment batches
-- Track payment status
-
-### 💱 Forex Management
-- Currency exchange rate management
-- Add and edit currency rates
-- Exchange rate calculator
-- Currency support status
-
-### 🔗 Payment Links
-- Generate shareable payment links
-- Support for multiple payment types
-- Link status tracking
-- Payment processing integration
-
-### 🔄 Wallet Transfers
-- Wallet-to-wallet transfers
-- Withdrawal requests
-- Transfer status management
-- Approval workflow
-
-### 👥 User Management
-- Merchant user administration
-- Role-based permissions
-- Two-factor authentication status
-- User activity tracking
-
-### 📊 Analytics
-- Transaction analytics
-- Revenue reporting
-- Performance metrics
-- Data visualization
-
-## Technology Stack
-
-- **Frontend**: React 18, Tailwind CSS
-- **Icons**: Heroicons
-- **Charts**: Recharts
-- **HTTP Client**: Axios
-- **Routing**: React Router DOM
-- **Date Handling**: date-fns
-- **JWT**: jwt-decode
-
-## Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
-
 - Node.js (v14 or higher)
-- npm or yarn
+- npm (v6 or higher)
 
-### Installation
+### Installation & Setup
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd merchant-dashboard
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd merchants-dashboard
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the dashboard**
+   
+   **Option 1: Using the startup script (Recommended)**
+   ```bash
+   ./start_dashboard.sh
+   ```
+   
+   **Option 2: Using npm scripts**
+   ```bash
+   # Development mode
+   npm start
+   
+   # Production mode
+   npm run build
+   npm run serve
+   ```
+
+## 🔧 Configuration
+
+### Environment Variables
+
+The dashboard uses the following environment variables:
+
+- `REACT_APP_API_URL`: API base URL (defaults to `https://merchants.globpay.ai`)
+- `PORT`: Dashboard port (defaults to `3000`)
+
+### Proxy Configuration
+
+The dashboard includes comprehensive proxy configuration to handle all API requests:
+
+- **API Endpoints**: `/api/*` → `https://merchants.globpay.ai`
+- **Authentication**: `/auth/*` → `https://merchants.globpay.ai`
+- **User Management**: `/users/*` → `https://merchants.globpay.ai`
+- **Role Management**: `/roles/*` → `https://merchants.globpay.ai`
+- **Merchant Management**: `/merchants/*` → `https://merchants.globpay.ai`
+- **Payment Processing**: `/process-payment`, `/callback`, `/globpay` → `https://merchants.globpay.ai`
+- **Forex**: `/forex/*` → `https://merchants.globpay.ai`
+- **Transactions**: `/transaction/*` → `https://merchants.globpay.ai`
+- **Drawings**: `/drawings/*` → `https://merchants.globpay.ai`
+
+### Recent Fixes
+
+**Fixed 405 Method Not Allowed Errors:**
+- Updated proxy configuration to match the working kotani middleware dash
+- Set `secure: false` to avoid SSL/TLS issues
+- Added comprehensive endpoint routing for all API calls
+- Improved error handling and logging
+
+## 📱 Features
+
+- **Dashboard Overview**: Real-time transaction statistics and balances
+- **Transaction Management**: View, filter, and manage transactions
+- **User Management**: Create, update, and manage user accounts
+- **Analytics**: Comprehensive reporting and analytics
+- **Payment Processing**: Process payments through various methods
+- **Forex Management**: Manage currency exchange rates
+- **Wallet Transfers**: Handle payout and transfer operations
+- **Payment Links**: Generate and manage payment links
+
+## 🔐 Authentication
+
+The dashboard uses JWT-based authentication. Users must log in with valid credentials to access the system.
+
+## 🛠️ Development
+
+### Project Structure
+```
+src/
+├── components/     # Reusable UI components
+├── pages/         # Page components
+├── contexts/      # React contexts (Auth, etc.)
+├── config/        # Configuration files
+└── utils/         # Utility functions
 ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+### API Configuration
 
-3. Start the development server:
+The API is configured in `src/config/api.js` and automatically handles:
+- Base URL configuration for development/production
+- JWT token management
+- Request/response interceptors
+- Error handling and logging
+
+### Proxy Middleware
+
+The proxy configuration is handled by:
+- **Development**: `src/setupProxy.js` (Create React App proxy)
+- **Production**: `server.js` (Express server with proxy middleware)
+
+## 🚀 Deployment
+
+### Development
 ```bash
 npm start
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-### API Configuration
-
-The dashboard connects to the merchant API at `https://merchants.globpay.ai`. Make sure the API is accessible and properly configured.
-
-### Authentication
-
-The dashboard uses JWT token-based authentication. Users can log in with their merchant credentials, and the token is automatically included in API requests.
-
-## Project Structure
-
-```
-src/
-├── components/          # Reusable UI components
-│   └── Layout.js       # Main layout component
-├── contexts/           # React contexts
-│   └── AuthContext.js  # Authentication context
-├── pages/              # Page components
-│   ├── Dashboard.js    # Main dashboard
-│   ├── Transactions.js # Transaction management
-│   ├── BulkPayments.js # Bulk payment processing
-│   ├── Forex.js        # Forex rate management
-│   ├── PaymentLinks.js # Payment link generation
-│   ├── WalletTransfers.js # Wallet transfer management
-│   ├── UserManagement.js # User administration
-│   ├── Analytics.js    # Analytics and reporting
-│   └── Settings.js     # Application settings
-├── App.js              # Main application component
-└── index.js            # Application entry point
+### Production
+```bash
+npm run build
+npm run serve
 ```
 
-## API Endpoints
+### Using Docker (if available)
+```bash
+docker build -t merchants-dashboard .
+docker run -p 3000:3000 merchants-dashboard
+```
 
-The dashboard integrates with the following API endpoints:
+## 🔍 Troubleshooting
 
-### Authentication
-- `POST /api/users/login` - User login
-- `POST /api/users/create` - Create user
-- `GET /api/users/list` - List users
-- `PUT /api/users/update/:id` - Update user
+### Common Issues
 
-### Transactions
-- `GET /api/v1/transaction/list` - List all transactions
-- `GET /api/v1/transaction/read/balance` - Get account balance
-- `GET /api/v1/transaction/filter` - Filter transactions by date/status
+1. **405 Method Not Allowed Error**
+   - ✅ **Fixed**: Updated proxy configuration to handle all endpoints
+   - ✅ **Fixed**: Set `secure: false` to avoid SSL issues
 
-### Bulk Payments
-- `POST /api/bulk/mobile/create` - Create bulk mobile payments
-- `POST /api/bulk/bank/create` - Create bulk bank payments
-- `GET /api/bulk/mobile/list` - List mobile bulk payments
-- `GET /api/bulk/bank/list` - List bank bulk payments
+2. **CORS Errors**
+   - ✅ **Fixed**: Comprehensive proxy configuration handles all routes
+   - ✅ **Fixed**: Proper `changeOrigin: true` setting
 
-### Forex
-- `GET /api/forex/list` - List forex rates
-- `POST /api/forex/create` - Create forex rate
-- `PUT /api/forex/update/:id` - Update forex rate
-- `DELETE /api/forex/delete/:id` - Delete forex rate
+3. **API Connection Issues**
+   - Ensure the backend API is running on `https://merchants.globpay.ai`
+   - Check network connectivity
+   - Verify API endpoints are accessible
 
-### Payment Links
-- `POST /api/links/generate` - Generate payment link
-- `POST /api/links/process` - Process payment via link
+### Debug Mode
 
-### Wallet Transfers
-- `POST /api/v1/drawings/transfer/toPayout` - Create transfer request
-- `GET /api/v1/drawings/list` - List transfer requests
-- `PUT /api/drawings/update/:id` - Update transfer status
+Enable debug logging by setting environment variables:
+```bash
+export DEBUG=proxy:*
+npm start
+```
 
-## Contributing
+## 📞 Support
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+For technical support or questions:
+- Check the console logs for detailed error information
+- Verify API endpoint accessibility
+- Ensure proper authentication credentials
 
-## License
+## 🔄 Updates
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+### Latest Changes
+- **Fixed 405 errors** by implementing comprehensive proxy configuration
+- **Added startup script** for easy deployment
+- **Improved error handling** with detailed logging
+- **Enhanced proxy middleware** to match kotani dashboard configuration
 
-## Support
+---
 
-For support and questions, please contact the development team or create an issue in the repository. 
+**Note**: This dashboard is configured to work with the `https://merchants.globpay.ai` API. Ensure the backend service is running and accessible before starting the dashboard. 

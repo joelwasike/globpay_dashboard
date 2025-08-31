@@ -47,38 +47,13 @@ const BulkPayments = () => {
       if (response.data && response.data.bulkPayments) {
         setBulkPayments(response.data.bulkPayments);
       } else {
-        // Mock data for demo
-        setBulkPayments([
-          {
-            id: 1,
-            type: activeTab,
-            amount: 50000,
-            phone: '254700000000',
-            mobileOperator: 'saf',
-            bankName: activeTab === 'bank' ? 'EQUITY' : null,
-            accountNumber: activeTab === 'bank' ? '1234567890' : null,
-            status: 'SUCCESS',
-            remarks: 'Payment for services',
-            merchantID: user?.merchantID,
-            createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2)
-          },
-          {
-            id: 2,
-            type: activeTab,
-            amount: 25000,
-            phone: '254711111111',
-            mobileOperator: 'mtn',
-            bankName: activeTab === 'bank' ? 'KCB' : null,
-            accountNumber: activeTab === 'bank' ? '0987654321' : null,
-            status: 'PENDING',
-            remarks: 'Payment for goods',
-            merchantID: user?.merchantID,
-            createdAt: new Date(Date.now() - 1000 * 60 * 60 * 4)
-          }
-        ]);
+        // No data available - set empty array
+        setBulkPayments([]);
       }
     } catch (error) {
       console.error('Error loading bulk payments:', error);
+      // Set empty array on error
+      setBulkPayments([]);
     } finally {
       setLoading(false);
     }
@@ -196,7 +171,7 @@ const BulkPayments = () => {
         </div>
         <button
           onClick={() => setShowCreateForm(true)}
-          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#015F6B] hover:bg-[#004d56] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#015F6B]"
         >
           <PlusIcon className="h-4 w-4 mr-2" />
           Create Bulk Payment
@@ -210,7 +185,7 @@ const BulkPayments = () => {
             onClick={() => setActiveTab('mobile')}
             className={`py-2 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'mobile'
-                ? 'border-blue-500 text-blue-600'
+                ? 'border-[#015F6B] text-[#015F6B]'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
@@ -221,7 +196,7 @@ const BulkPayments = () => {
             onClick={() => setActiveTab('bank')}
             className={`py-2 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'bank'
-                ? 'border-blue-500 text-blue-600'
+                ? 'border-[#015F6B] text-[#015F6B]'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
@@ -262,7 +237,7 @@ const BulkPayments = () => {
                           type="number"
                           value={payment.amount}
                           onChange={(e) => updatePaymentRow(index, 'amount', e.target.value)}
-                          className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                          className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-[#015F6B] focus:border-[#015F6B]"
                           placeholder="Enter amount"
                         />
                       </div>
@@ -275,7 +250,7 @@ const BulkPayments = () => {
                           type="text"
                           value={payment.phone || payment.accountNumber}
                           onChange={(e) => updatePaymentRow(index, activeTab === 'mobile' ? 'phone' : 'accountNumber', e.target.value)}
-                          className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                          className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-[#015F6B] focus:border-[#015F6B]"
                           placeholder={activeTab === 'mobile' ? '254700000000' : '1234567890'}
                         />
                       </div>
@@ -286,7 +261,7 @@ const BulkPayments = () => {
                           <select
                             value={payment.mobileOperator}
                             onChange={(e) => updatePaymentRow(index, 'mobileOperator', e.target.value)}
-                            className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-[#015F6B] focus:border-[#015F6B]"
                           >
                             <option value="saf">Safaricom</option>
                             <option value="mtn">MTN</option>
@@ -299,7 +274,7 @@ const BulkPayments = () => {
                           <select
                             value={payment.bankName}
                             onChange={(e) => updatePaymentRow(index, 'bankName', e.target.value)}
-                            className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-[#015F6B] focus:border-[#015F6B]"
                           >
                             <option value="EQUITY">Equity Bank</option>
                             <option value="KCB">KCB Bank</option>
@@ -315,7 +290,7 @@ const BulkPayments = () => {
                           type="text"
                           value={payment.remarks}
                           onChange={(e) => updatePaymentRow(index, 'remarks', e.target.value)}
-                          className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                          className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-[#015F6B] focus:border-[#015F6B]"
                           placeholder="Payment description"
                         />
                       </div>
@@ -325,7 +300,7 @@ const BulkPayments = () => {
                 
                 <button
                   onClick={addPaymentRow}
-                  className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#015F6B]"
                 >
                   <PlusIcon className="h-4 w-4 mr-2" />
                   Add Another Payment
@@ -335,13 +310,13 @@ const BulkPayments = () => {
               <div className="flex justify-end space-x-3 mt-6">
                 <button
                   onClick={() => setShowCreateForm(false)}
-                  className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#015F6B]"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleCreateBulkPayment}
-                  className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#015F6B] hover:bg-[#004d56] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#015F6B]"
                 >
                   Create Bulk Payment
                 </button>
@@ -389,9 +364,9 @@ const BulkPayments = () => {
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                           {activeTab === 'mobile' ? (
-                            <DevicePhoneMobileIcon className="h-5 w-5 text-blue-500" />
+                            <DevicePhoneMobileIcon className="h-5 w-5 text-[#015F6B]" />
                           ) : (
-                            <BuildingLibraryIcon className="h-5 w-5 text-green-500" />
+                            <BuildingLibraryIcon className="h-5 w-5 text-[#00B7AA]" />
                           )}
                         </div>
                         <div className="ml-4">
@@ -439,10 +414,10 @@ const BulkPayments = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <div className="flex space-x-2">
-                        <button className="text-blue-600 hover:text-blue-900">
+                        <button className="text-[#015F6B] hover:text-[#004d56]">
                           <EyeIcon className="h-4 w-4" />
                         </button>
-                        <button className="text-green-600 hover:text-green-900">
+                        <button className="text-[#00B7AA] hover:text-[#009a8f]">
                           <PencilIcon className="h-4 w-4" />
                         </button>
                       </div>
