@@ -18,7 +18,7 @@ import {
 import logo from '../logo/5852952286349871860.jpg';
 
 const Layout = () => {
-  const { user, logout } = useAuth();
+  const { user, logout, loading } = useAuth();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -40,6 +40,15 @@ const Layout = () => {
     'Fintech Corp',
     'Payment Gateway'
   ];
+
+  // Show loading spinner while checking authentication
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#015F6B]"></div>
+      </div>
+    );
+  }
 
   if (!user) {
     return <Navigate to="/login" replace />;
