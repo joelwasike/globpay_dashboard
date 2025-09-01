@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import {
   CurrencyDollarIcon,
@@ -19,6 +20,7 @@ import { format } from 'date-fns';
 
 const Dashboard = () => {
   const { user, api } = useAuth();
+  const navigate = useNavigate();
   const [payoutBalance, setPayoutBalance] = useState({ totalBalance: 0, baseCurrency: 'USD' });
   const [payinBalance, setPayinBalance] = useState({ totalBalance: 0, baseCurrency: 'USD' });
   const [recentTransactions, setRecentTransactions] = useState([]);
@@ -277,7 +279,10 @@ const Dashboard = () => {
             Quick Actions
           </h3>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <button className="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-[#015F6B] rounded-lg border border-gray-200 hover:border-[#00B7AA]">
+            <button 
+              onClick={() => navigate('/bulk-payments')}
+              className="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-[#015F6B] rounded-lg border border-gray-200 hover:border-[#00B7AA]"
+            >
               <div>
                 <span className="rounded-lg inline-flex p-3 bg-[#015F6B] text-white ring-4 ring-white">
                   <BanknotesIcon className="h-6 w-6" />
@@ -285,7 +290,6 @@ const Dashboard = () => {
               </div>
               <div className="mt-8">
                 <h3 className="text-lg font-medium">
-                  <span className="absolute inset-0" aria-hidden="true" />
                   Create Bulk Payment
                 </h3>
                 <p className="mt-2 text-sm text-gray-500">
@@ -294,7 +298,10 @@ const Dashboard = () => {
               </div>
             </button>
 
-            <button className="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-[#015F6B] rounded-lg border border-gray-200 hover:border-[#00B7AA]">
+            <button 
+              onClick={() => navigate('/payment-links')}
+              className="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-[#015F6B] rounded-lg border border-gray-200 hover:border-[#00B7AA]"
+            >
               <div>
                 <span className="rounded-lg inline-flex p-3 bg-[#00B7AA] text-white ring-4 ring-white">
                   <LinkIcon className="h-6 w-6" />
@@ -302,7 +309,6 @@ const Dashboard = () => {
               </div>
               <div className="mt-8">
                 <h3 className="text-lg font-medium">
-                  <span className="absolute inset-0" aria-hidden="true" />
                   Generate Payment Link
                 </h3>
                 <p className="mt-2 text-sm text-gray-500">
@@ -311,7 +317,10 @@ const Dashboard = () => {
               </div>
             </button>
 
-            <button className="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-[#015F6B] rounded-lg border border-gray-200 hover:border-[#00B7AA]">
+            <button 
+              onClick={() => navigate('/forex')}
+              className="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-[#015F6B] rounded-lg border border-gray-200 hover:border-[#00B7AA]"
+            >
               <div>
                 <span className="rounded-lg inline-flex p-3 bg-[#015F6B] text-white ring-4 ring-white">
                   <CurrencyDollarIcon className="h-6 w-6" />
@@ -319,7 +328,6 @@ const Dashboard = () => {
               </div>
               <div className="mt-8">
                 <h3 className="text-lg font-medium">
-                  <span className="absolute inset-0" aria-hidden="true" />
                   Forex Rates
                 </h3>
                 <p className="mt-2 text-sm text-gray-500">
@@ -328,7 +336,10 @@ const Dashboard = () => {
               </div>
             </button>
 
-            <button className="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-[#015F6B] rounded-lg border border-gray-200 hover:border-[#00B7AA]">
+            <button 
+              onClick={() => navigate('/wallet-transfers')}
+              className="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-[#015F6B] rounded-lg border border-gray-200 hover:border-[#00B7AA]"
+            >
               <div>
                 <span className="rounded-lg inline-flex p-3 bg-[#00B7AA] text-white ring-4 ring-white">
                   <ArrowPathIcon className="h-6 w-6" />
@@ -336,7 +347,6 @@ const Dashboard = () => {
               </div>
               <div className="mt-8">
                 <h3 className="text-lg font-medium">
-                  <span className="absolute inset-0" aria-hidden="true" />
                   Wallet Transfer
                 </h3>
                 <p className="mt-2 text-sm text-gray-500">
