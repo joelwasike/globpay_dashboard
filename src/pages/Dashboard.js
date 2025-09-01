@@ -19,8 +19,8 @@ import { format } from 'date-fns';
 
 const Dashboard = () => {
   const { user, api } = useAuth();
-  const [payoutBalance, setPayoutBalance] = useState({ totalBalance: 0, baseCurrency: 'KES' });
-  const [payinBalance, setPayinBalance] = useState({ totalBalance: 0, baseCurrency: 'KES' });
+  const [payoutBalance, setPayoutBalance] = useState({ totalBalance: 0, baseCurrency: 'USD' });
+  const [payinBalance, setPayinBalance] = useState({ totalBalance: 0, baseCurrency: 'USD' });
   const [recentTransactions, setRecentTransactions] = useState([]);
   const [transactionStats, setTransactionStats] = useState({
     total: 0,
@@ -42,7 +42,7 @@ const Dashboard = () => {
         const balanceResponse = await api.get('/api/v1/transaction/read/balance');
         if (balanceResponse.data && balanceResponse.data.Balances) {
           const b = balanceResponse.data.Balances;
-          setPayoutBalance({ totalBalance: b.totalBalance || 0, baseCurrency: b.baseCurrency || balanceResponse.data.baseCurrency || 'KES' });
+          setPayoutBalance({ totalBalance: b.totalBalance || 0, baseCurrency: 'USD' });
         }
       } catch (error) {
         console.error('Error loading payout balance:', error);
@@ -53,7 +53,7 @@ const Dashboard = () => {
         const payinResp = await api.get('/api/v1/transaction/read/payins/balance');
         if (payinResp.data && payinResp.data.Balances) {
           const b = payinResp.data.Balances;
-          setPayinBalance({ totalBalance: b.totalBalance || 0, baseCurrency: b.baseCurrency || payinResp.data.baseCurrency || 'KES' });
+          setPayinBalance({ totalBalance: b.totalBalance || 0, baseCurrency: 'USD' });
         }
       } catch (error) {
         console.error('Error loading payin balance:', error);

@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-// API base URL configuration
-const API_BASE_URL = process.env.NODE_ENV === 'development' 
-  ? '' // Use proxy in development (empty string means relative URLs)
-  : 'https://merchants.globpay.ai'; // Direct URL in production (will need proxy server)
+// API base URL configuration (direct to backend, no proxy)
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://merchants.globpay.ai';
 
 console.log('API Configuration:', {
   NODE_ENV: process.env.NODE_ENV,
