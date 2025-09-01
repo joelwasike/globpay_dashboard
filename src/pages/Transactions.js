@@ -20,6 +20,7 @@ const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
+  const [statusFilter, setStatusFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [dateRange, setDateRange] = useState({
     startDate: '',
@@ -166,6 +167,7 @@ const Transactions = () => {
   const getStatusIcon = (status) => {
     switch (status) {
       case 'SUCCESS':
+      case 'COMPLETE':
         return <CheckCircleIcon className="h-5 w-5 text-green-500" />;
       case 'PENDING':
         return <ClockIcon className="h-5 w-5 text-yellow-500" />;
@@ -179,6 +181,7 @@ const Transactions = () => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'SUCCESS':
+      case 'COMPLETE':
         return 'text-green-600 bg-green-100';
       case 'PENDING':
         return 'text-yellow-600 bg-yellow-100';
@@ -219,7 +222,12 @@ const Transactions = () => {
       transaction.checkout_request_id?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       transaction.msisdn?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       transaction.source_of_funds?.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesSearch;
+    const status = (transaction.transaction_status || '').toUpperCase();
+    const matchesStatus =
+      statusFilter === 'all' ||
+      status === statusFilter ||
+      (statusFilter === 'SUCCESS' && status === 'COMPLETE');
+    return matchesSearch && matchesStatus;
   });
 
   const handleFilterChange = (newFilter) => {
@@ -367,6 +375,20 @@ const Transactions = () => {
               Filter
             </button>
           </div>
+          {/* Status Filter */}
+          <div className="flex items-center gap-2">
+            <label className="text-sm text-gray-600">Status</label>
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-[#015F6B] focus:border-[#015F6B] bg-white"
+            >
+              <option value="all">All</option>
+              <option value="SUCCESS">Success</option>
+              <option value="PENDING">Pending</option>
+              <option value="FAILED">Failed</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -502,7 +524,7 @@ const Transactions = () => {
                <div className="ml-4">
                  <p className="text-sm font-medium text-green-600">Successful</p>
                  <p className="text-2xl font-semibold text-green-900">
-                   {transactions.filter(t => t.transaction_status === 'SUCCESS').length}
+                   {transactions.filter(t => (t.transaction_status === 'SUCCESS' || t.transaction_status === 'COMPLETE')).length}
                  </p>
                </div>
              </div>
